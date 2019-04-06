@@ -1,0 +1,9 @@
+Feature: Customer requests a certificate
+Our company (let's call it CertIT) provides IT certificates which can be requested by our customers.
+
+Scenario: Customer requests a new certificate
+Examples
+	1. Customer can request a Java certificate, when she doesn't have one
+	2. Customer cannot request a Java certificate, whe she already has one
+	3. Customer can request a certificate from our partners (special fee is applied)
+	4. Customer cannot request a Java 1.7 certificate, when she already has Java 1.8 certificate (already has the requested skills)

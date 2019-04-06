@@ -1,0 +1,8 @@
+CertIT - IT certificates management
+
+Main features
+	1. Requesting certificates
+	2. Renewing certificates
+	3. Issuing certificates
+	4. Certificate payments
+	5. Integration with training and exam providers

@@ -1,0 +1,17 @@
+Feature: Certificate renewal
+A customer can renew the expiring certificate.
+
+Scenario: Renewing the expiring certificate
+Examples
+	1. Customer can renew the certificate which expires in 30 days if she pays the renewal price
+	2. Customer can renew the certificate which expires in 15 days if she pays the renewal price + extra fee (to be specified)
+	3. Customer can renew the certificate which expires in 7 days if she pays the renewal price + extraextra fee (to be specified)
+	4. Customer receives the notification 30, 15 and 7 days before the expiration date
+
+Scenario: Expired certiificate
+Examples
+	1. Customer can still renew the expired certificate (up to 30 days after the expiration date), but she needs to pay much higher price
+	2. Customer receives the notification when certificate is expired
+	3. Certain teams and members also receive notifications about expired certificate (details to be specified)
+	4. Certificate not paid due to 30 days after the expiration is cancelled and notification is sent to the customer
+	5. Payment made after 30 days is not rejected, but added to special customer account, which can be later used to request new certificates

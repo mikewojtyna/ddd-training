@@ -1,0 +1,18 @@
+Feature: Issuing certificates
+That's the main goal of our system - to be able to issue certificate to the final customers.
+
+Scenario: Issuing certificate process started
+Examples
+	1. When certificate exam is passed, the issue process starts and certificate is send to the approval team
+	2. When certificate exam is not passed, the certificate is not issued and customer is simply notified and nothing important happens (*really?)
+	3. When certificate exam is not taken, the exam can be retaken if customer can justify her absence
+
+Scenario: Approval process
+Examples
+	1. If exam result is verified, the team approves the certificate
+	2. If team suspects there could be cheating involved, the certificate is hold until the end of the verification
+	3. If team initially suspected cheating could be involed but cannot verify this under 30 days, the certificate is simply approved
+
+Scenario: Shipping certificate
+Examples
+	1. If certificate is approved, the certificate is signed and send to the customer

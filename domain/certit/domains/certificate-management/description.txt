@@ -1,0 +1,1 @@
+This is the core domain of CertIT system. Certificate is first requested, then the exam is scheduled, next result of the exam is verified and finally the certificate is shipped.

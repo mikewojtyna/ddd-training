@@ -1,0 +1,29 @@
+Feature: Certificate exam management
+When customer requests a new certificate, in order to receive the certificate, she must must first pass the exam.
+
+Scenario: Exam is scheduled
+Examples
+	1. Whenever customer requests a new certificate, the exam date is scheduled
+	2. When exam is scheduled, the notification is send to the customer
+
+Scenario: Paying for exam
+Examples
+	1. Customer can take an exam only if she paid for it
+	2. Customer cannot take an exam if she didn't pay for it
+	3. If customer paid for the exam earlier than 10 days before the exam, she pays the regular fee
+	4. If customer paid for the exam exactly 10 days before the exam, she pays the regular fee
+	5. If customer paid 9 days before the exam, she pays 20% more
+	6. If customer paid 5 days before the exam, she pays 30% more
+	7. If customer paid 3 days before the exam,e she pays 50% more
+	8. If customer wants to pay 2 days before the exam, the payment is rejected and customer cannot take the exam
+	9. When customer paid on time, the notification is send
+	10. The notification is also sent a month, 15, 10 and 5 days before the scheduled exam date
+	11. If customer takes the exam again, the price is reduced (to be specified - we don't know how much exactly)
+
+Scenario: Taking an exam
+Examples
+	1. If customer took the exam and passed, then the certificate status is updated to "exam passed"
+	2. If customer took the exam and didn't pass, then the certificate status is updated to "exam failed"
+	3. If customer didn't take an exam, then the certificate status is updated to "exam not taken"
+	4. For each of these examples, the corresponding notification is sent to the customer
+	5. Customer can take the exam again, but new exam date needs to be scheduled (back to the "Exam is scheduled" scenario)
