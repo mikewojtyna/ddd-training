@@ -1,0 +1,6 @@
+Probably another core domain, but this needs to be investigated.
+
+CertIT provides not only certificates, but also consulting and training services
+. It's important part of company's revenues, so that's why we initially think of
+ it as about core domain. Here we will take care of all the things related to
+ consulting and training IT services.

@@ -1,0 +1,8 @@
+Feature: Customers can request consulting and training services from our
+catalogue.
+
+Scenario:
+Examples
+    1.
+    2.
+    3.
