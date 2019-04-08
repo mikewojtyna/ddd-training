@@ -10,7 +10,7 @@ public class RentBikeTest {
 
 	// @formatter:off
 	@DisplayName(
-		"user can rent a bike for 20 minutes, " +
+		"bike can be rent for 20 minutes by user, " +
 		"when she has at least $5 in her account"
 	)
 	// @formatter:on
