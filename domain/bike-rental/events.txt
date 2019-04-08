@@ -1,0 +1,16 @@
+Create account -> Account created
+
+Charge account -> Account charged
+
+Delete account -> Account deleted
+
+Update profile -> Profile updated
+
+===
+
+[User] Rent a bike -> Bike rent for calculated period {if user has sufficient
+funds} {user can rent a bike for max minutes (rule to be specified)}
+
+[User] Return a bike -> Bike returned
+
+[Time] Bike not returned on time -> Bike stolen
