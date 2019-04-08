@@ -1,6 +1,7 @@
 package pro.buildmysoftware.ddd.tea;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 public class Order {
@@ -12,9 +13,8 @@ public class Order {
 		items = new ArrayList<>();
 	}
 
-	public void chooseTea(Tea blackTea, Tea greenTea) {
-		items.add(blackTea);
-		items.add(greenTea);
+	public void chooseTea(Tea... teas) {
+		items.addAll(Arrays.asList(teas));
 	}
 
 	public void submit() {
