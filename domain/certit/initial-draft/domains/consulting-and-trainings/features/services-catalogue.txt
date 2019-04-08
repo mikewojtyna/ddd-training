@@ -1,8 +1,26 @@
 Feature: Customers can request consulting and training services from our
 catalogue.
 
-Scenario:
+Scenario: Customer requests a training from our catalogue
 Examples
-    1.
-    2.
-    3.
+    1. Mike requests Java training
+    2. George cannot request Perl training, because it's not available in the
+    catalogue
+
+Scenario: Customer requests a training from partners catalogue
+Examples
+    1. Mike requests Perl training from partners catalogue and CertIT receives
+    the fee
+    2. Mike cannot request C# training from partners catalogue, CertIT gains
+    nothing
+
+Scenario: Customer being employee of our partner requests our training
+Examples
+    1. John (being employee of ACME, which is our partner) requests the Java
+    training and pays 30% less
+
+Scenario: Customer who bought certificates from us previously requests a
+training
+Examples
+    1. Alice bought a certificate from us and requests Java training, then the
+    fee is applied (to be specified)
