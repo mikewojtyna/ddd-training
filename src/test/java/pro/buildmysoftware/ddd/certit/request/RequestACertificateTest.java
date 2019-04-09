@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.time.LocalDate;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -60,6 +62,23 @@ public class RequestACertificateTest {
 		verify(eventPublisher, times(1)).publish(expectedEvent);
 	}
 
+	@DisplayName("certificate request has date")
+	@Test
+	void test2() throws Exception {
+		// given
+		CertificatesOffice office = defaultOffice();
+		LocalDate date = LocalDate.of(2010, 10, 15);
+		RequestCertificateCommand requestCertificate =
+			requestCertificateCommandWithDate(date);
+
+		// when
+		CertificateRequest request =
+			office.request(requestCertificate);
+
+		// then
+		assertThat(request.getDate()).isEqualTo(date);
+	}
+
 	// @formatter:off
 	@DisplayName(
 		"here we should also probably write a simple integration test" +
@@ -73,12 +92,20 @@ public class RequestACertificateTest {
 		// TODO: add this test
 	}
 
+	private RequestCertificateCommand requestCertificateCommandWithDate(LocalDate date) {
+		return new RequestCertificateCommand(anyClient(), date);
+	}
+
 	private CertificateRequested certificateRequestedBy(Client client) {
 		return new CertificateRequested(client);
 	}
 
 	private RequestCertificateCommand requestCertificateCommandFor(Client client) {
-		return new RequestCertificateCommand(client);
+		return new RequestCertificateCommand(client, anyDate());
+	}
+
+	private LocalDate anyDate() {
+		return LocalDate.now();
 	}
 
 	private Client clientWithName(String name) {
@@ -86,7 +113,7 @@ public class RequestACertificateTest {
 	}
 
 	private RequestCertificateCommand anyCommand() {
-		return new RequestCertificateCommand(anyClient());
+		return new RequestCertificateCommand(anyClient(), anyDate());
 	}
 
 	private Client anyClient() {

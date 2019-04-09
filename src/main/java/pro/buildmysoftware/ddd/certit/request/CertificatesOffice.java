@@ -13,7 +13,7 @@ public class CertificatesOffice {
 			new CertificateRequested(requestCertificate
 			.getClient());
 		eventPublisher.publish(event);
-		return new CertificateRequest();
+		return new CertificateRequest(requestCertificate.getDate());
 	}
 
 }
