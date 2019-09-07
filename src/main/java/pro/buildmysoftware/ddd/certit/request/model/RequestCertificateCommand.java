@@ -1,9 +1,8 @@
-package pro.buildmysoftware.ddd.certit.request;
+package pro.buildmysoftware.ddd.certit.request.model;
 
 import java.time.LocalDate;
 
 public class RequestCertificateCommand {
-
 	private final LocalDate date;
 	private Client client;
 

@@ -2,6 +2,7 @@ package pro.buildmysoftware.ddd.certit.request;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import pro.buildmysoftware.ddd.certit.request.model.CertificateRequest;
 
 import java.time.LocalDate;
 

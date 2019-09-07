@@ -1,5 +1,7 @@
 package pro.buildmysoftware.ddd.certit.request;
 
+import pro.buildmysoftware.ddd.certit.request.model.CertificateRequest;
+
 import java.time.LocalDate;
 
 public class CertificateRequestTestFixture {

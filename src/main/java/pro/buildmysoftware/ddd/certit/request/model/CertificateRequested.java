@@ -1,4 +1,4 @@
-package pro.buildmysoftware.ddd.certit.request;
+package pro.buildmysoftware.ddd.certit.request.model;
 
 import java.util.Objects;
 
@@ -7,6 +7,10 @@ public class CertificateRequested {
 
 	public CertificateRequested(Client client) {
 		this.client = client;
+	}
+
+	public Client getClient() {
+		return client;
 	}
 
 	@Override

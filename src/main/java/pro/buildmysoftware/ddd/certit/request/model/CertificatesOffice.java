@@ -1,7 +1,6 @@
-package pro.buildmysoftware.ddd.certit.request;
+package pro.buildmysoftware.ddd.certit.request.model;
 
 public class CertificatesOffice {
-
 	private DomainEventPublisher eventPublisher;
 
 	public CertificatesOffice(DomainEventPublisher eventPublisher) {
@@ -15,5 +14,4 @@ public class CertificatesOffice {
 		eventPublisher.publish(event);
 		return new CertificateRequest(requestCertificate.getDate());
 	}
-
 }

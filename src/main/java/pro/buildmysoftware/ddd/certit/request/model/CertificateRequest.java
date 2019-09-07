@@ -1,4 +1,4 @@
-package pro.buildmysoftware.ddd.certit.request;
+package pro.buildmysoftware.ddd.certit.request.model;
 
 import java.time.LocalDate;
 
