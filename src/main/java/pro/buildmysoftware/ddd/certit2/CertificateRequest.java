@@ -20,7 +20,7 @@ public class CertificateRequest {
 	}
 
 	public ExamScheduled scheduleExam(LocalDateTime examDate,
-					  ExamPriceCalculator priceCalculator) {
+					  ExamPricePolicy priceCalculator) {
 		if (examScheduled) {
 			throw new CannotRescheduleExamException("Exam is " +
 				"already scheduled");
@@ -29,7 +29,7 @@ public class CertificateRequest {
 		return new ExamScheduled(examDate, examPrice(priceCalculator));
 	}
 
-	private Money examPrice(ExamPriceCalculator priceCalculator) {
+	private Money examPrice(ExamPricePolicy priceCalculator) {
 		return priceCalculator.calculate(client, certificate);
 	}
 }

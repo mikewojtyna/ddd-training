@@ -90,7 +90,7 @@ public class CertificateRequestTest {
 		RequestCertificateType javaCertificate = javaCert();
 		CertificateRequest certificateRequest =
 			requestCertificateByRegularClientFor(javaCertificate);
-		ExamPriceCalculator calculator =
+		ExamPricePolicy calculator =
 			(client, certificate) -> usd(10.00);
 
 		// when
@@ -121,7 +121,7 @@ public class CertificateRequestTest {
 		assertThat(exception).isNotNull();
 	}
 
-	private ExamPriceCalculator anyPriceCalculator() {
+	private ExamPricePolicy anyPriceCalculator() {
 		return (client, certificate) -> usd(10.00);
 	}
 
