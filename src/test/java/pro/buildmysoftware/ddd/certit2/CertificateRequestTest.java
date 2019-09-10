@@ -1,5 +1,7 @@
 package pro.buildmysoftware.ddd.certit2;
 
+import org.joda.money.CurrencyUnit;
+import org.joda.money.Money;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -74,15 +76,60 @@ public class CertificateRequestTest {
 	)
 	// @formatter:on
 	@Test
-	void test3() throws Exception {
+	void payEx0() throws Exception {
 		// given
 		CertificateRequest certificateRequest = scheduleExam();
 
 		// when
-		ExamPaid examPaid = certificateRequest.pay();
+		ExamPaid examPaid = payForExam(certificateRequest);
 
 		// then
 		assertThat(examPaid).isNotNull();
+	}
+
+	// @formatter:off
+	@DisplayName(
+		"given certificate request " +
+		"when pay for exam, " +
+		"then price is calculated by exam price calculator"
+	)
+	// @formatter:on
+	@Test
+	void payEx1() throws Exception {
+		// given
+		Certificate javaCertificate = javaCert();
+		CertificateRequest certificateRequest =
+			requestCertificateByRegularClientFor(javaCertificate);
+		certificateRequest.scheduleExam(anyDate());
+		ExamPriceCalculator calculator =
+			(client, certificate) -> usd(10.00);
+
+		// when
+		ExamPaid examPaid = certificateRequest.pay(calculator);
+
+		// then
+		assertThat(examPaid.getPrice()).isEqualTo(usd(10.00));
+	}
+
+	private ExamPaid payForExam(CertificateRequest certificateRequest) {
+		return certificateRequest
+			.pay(((client, certificate) -> usd(10.00)));
+	}
+
+	private Money usd(double v) {
+		return Money.of(CurrencyUnit.USD, v);
+	}
+
+	private CertificateRequest requestCertificateByRegularClientFor(Certificate certificate) {
+		return new CertificateRequest(regularClient(), certificate);
+	}
+
+	private Client regularClient() {
+		return new Client(true);
+	}
+
+	private Certificate javaCert() {
+		return new Certificate("JAVA");
 	}
 
 	private CertificateRequest scheduleExam() {
