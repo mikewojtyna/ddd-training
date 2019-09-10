@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Office {
 	public CertificateRequested requestCertificate(Client client,
-						       Certificate certificate) {
+						       RequestCertificateType certificate) {
 		Objects.requireNonNull(client);
 		Objects.requireNonNull(certificate);
 		return new CertificateRequested(client, certificate);

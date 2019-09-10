@@ -1,4 +1,4 @@
 package pro.buildmysoftware.ddd.certit2;
 
-public class Certificate {
+public class ExamPassed {
 }

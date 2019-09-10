@@ -5,5 +5,5 @@ import lombok.Value;
 @Value
 public class CertificateRequested {
 	private final Client client;
-	private final Certificate certificate;
+	private final RequestCertificateType certificate;
 }

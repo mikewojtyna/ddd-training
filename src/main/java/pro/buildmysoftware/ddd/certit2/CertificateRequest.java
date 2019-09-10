@@ -1,13 +1,16 @@
 package pro.buildmysoftware.ddd.certit2;
 
+import org.joda.money.Money;
+
 import java.time.LocalDateTime;
 
 public class CertificateRequest {
 	private Client client;
-	private Certificate certificate;
+	private RequestCertificateType certificate;
 	private boolean examScheduled;
 
-	public CertificateRequest(Client client, Certificate certificate) {
+	public CertificateRequest(Client client,
+				  RequestCertificateType certificate) {
 		this.client = client;
 		this.certificate = certificate;
 	}
@@ -16,17 +19,17 @@ public class CertificateRequest {
 		return examScheduled;
 	}
 
-	public ExamScheduled scheduleExam(LocalDateTime examDate) {
+	public ExamScheduled scheduleExam(LocalDateTime examDate,
+					  ExamPriceCalculator priceCalculator) {
 		if (examScheduled) {
 			throw new CannotRescheduleExamException("Exam is " +
 				"already scheduled");
 		}
 		examScheduled = true;
-		return new ExamScheduled(examDate);
+		return new ExamScheduled(examDate, examPrice(priceCalculator));
 	}
 
-	public ExamPaid pay(ExamPriceCalculator priceCalculator) {
-		return new ExamPaid(priceCalculator
-			.calculate(client, certificate));
+	private Money examPrice(ExamPriceCalculator priceCalculator) {
+		return priceCalculator.calculate(client, certificate);
 	}
 }

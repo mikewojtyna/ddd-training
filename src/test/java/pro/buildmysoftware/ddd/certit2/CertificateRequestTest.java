@@ -23,7 +23,7 @@ public class CertificateRequestTest {
 		Client client = anyClient();
 
 		// when
-		Certificate certificate = anyCertificate();
+		RequestCertificateType certificate = anyCertificate();
 		CertificateRequested certificateRequested = office
 			.requestCertificate(client, certificate);
 
@@ -44,7 +44,7 @@ public class CertificateRequestTest {
 		// given
 		Office office = anyOffice();
 		Client client = anyClient();
-		Certificate certificate = anyCertificate();
+		RequestCertificateType certificate = anyCertificate();
 		CertificateRequested certificateRequested = office
 			.requestCertificate(client, certificate);
 
@@ -70,7 +70,7 @@ public class CertificateRequestTest {
 
 		// when
 		ExamScheduled examScheduled = certificateRequest
-			.scheduleExam(examDate);
+			.scheduleExam(examDate, anyPriceCalculator());
 
 		// then
 		assertThat(examScheduled.getDate()).isEqualTo(examDate);
@@ -79,43 +79,26 @@ public class CertificateRequestTest {
 
 	// @formatter:off
 	@DisplayName(
-		"paying for exam"
-	)
-	// @formatter:on
-	@Test
-	void payEx0() throws Exception {
-		// given
-		CertificateRequest certificateRequest = scheduleExam();
-
-		// when
-		ExamPaid examPaid = payForExam(certificateRequest);
-
-		// then
-		assertThat(examPaid).isNotNull();
-	}
-
-	// @formatter:off
-	@DisplayName(
 		"given certificate request " +
-		"when pay for exam, " +
+		"when schedule an exam, " +
 		"then price is calculated by exam price calculator"
 	)
 	// @formatter:on
 	@Test
 	void payEx1() throws Exception {
 		// given
-		Certificate javaCertificate = javaCert();
+		RequestCertificateType javaCertificate = javaCert();
 		CertificateRequest certificateRequest =
 			requestCertificateByRegularClientFor(javaCertificate);
-		certificateRequest.scheduleExam(anyDate());
 		ExamPriceCalculator calculator =
 			(client, certificate) -> usd(10.00);
 
 		// when
-		ExamPaid examPaid = certificateRequest.pay(calculator);
+		ExamScheduled examScheduled = certificateRequest
+			.scheduleExam(anyDate(), calculator);
 
 		// then
-		assertThat(examPaid.getPrice()).isEqualTo(usd(10.00));
+		assertThat(examScheduled.getPrice()).isEqualTo(usd(10.00));
 	}
 
 	// @formatter:off
@@ -131,14 +114,18 @@ public class CertificateRequestTest {
 		// when
 		CannotRescheduleExamException exception =
 			catchThrowableOfType(() -> certificateRequest
-			.scheduleExam(anyDate()),
+			.scheduleExam(anyDate(), anyPriceCalculator()),
 				CannotRescheduleExamException.class);
 
 		// then
 		assertThat(exception).isNotNull();
 	}
 
-	private Certificate anyCertificate() {
+	private ExamPriceCalculator anyPriceCalculator() {
+		return (client, certificate) -> usd(10.00);
+	}
+
+	private RequestCertificateType anyCertificate() {
 		return javaCert();
 	}
 
@@ -146,16 +133,11 @@ public class CertificateRequestTest {
 		return regularClient();
 	}
 
-	private ExamPaid payForExam(CertificateRequest certificateRequest) {
-		return certificateRequest
-			.pay(((client, certificate) -> usd(10.00)));
-	}
-
 	private Money usd(double v) {
 		return Money.of(CurrencyUnit.USD, v);
 	}
 
-	private CertificateRequest requestCertificateByRegularClientFor(Certificate certificate) {
+	private CertificateRequest requestCertificateByRegularClientFor(RequestCertificateType certificate) {
 		return new CertificateRequest(regularClient(), certificate);
 	}
 
@@ -163,14 +145,15 @@ public class CertificateRequestTest {
 		return new Client(true);
 	}
 
-	private Certificate javaCert() {
-		return new Certificate("JAVA");
+	private RequestCertificateType javaCert() {
+		return new RequestCertificateType("JAVA");
 	}
 
 	private CertificateRequest scheduleExam() {
 		CertificateRequest certificateRequest =
 			generateCertificateRequest();
-		certificateRequest.scheduleExam(anyDate());
+		certificateRequest
+			.scheduleExam(anyDate(), anyPriceCalculator());
 		return certificateRequest;
 	}
 
