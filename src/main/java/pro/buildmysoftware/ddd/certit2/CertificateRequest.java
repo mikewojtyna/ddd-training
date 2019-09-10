@@ -3,16 +3,9 @@ package pro.buildmysoftware.ddd.certit2;
 import java.time.LocalDateTime;
 
 public class CertificateRequest {
-	private static final String JAVA = "JAVA";
-	// TODO: do we allow certificate reuqest without client and
-	//  cetificate?
 	private Client client;
 	private Certificate certificate;
 	private boolean examScheduled;
-
-	public CertificateRequest() {
-		examScheduled = false;
-	}
 
 	public CertificateRequest(Client client, Certificate certificate) {
 		this.client = client;
@@ -24,6 +17,10 @@ public class CertificateRequest {
 	}
 
 	public ExamScheduled scheduleExam(LocalDateTime examDate) {
+		if (examScheduled) {
+			throw new CannotRescheduleExamException("Exam is " +
+				"already scheduled");
+		}
 		examScheduled = true;
 		return new ExamScheduled(examDate);
 	}

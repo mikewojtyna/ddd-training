@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowableOfType;
 
 public class CertificateRequestTest {
 	// @formatter:off
@@ -19,13 +20,17 @@ public class CertificateRequestTest {
 	void test() throws Exception {
 		// given
 		Office office = anyOffice();
+		Client client = anyClient();
 
 		// when
+		Certificate certificate = anyCertificate();
 		CertificateRequested certificateRequested = office
-			.requestCertificate();
+			.requestCertificate(client, certificate);
 
 		// then
-		assertThat(certificateRequested).isNotNull();
+		assertThat(certificateRequested.getClient()).isEqualTo(client);
+		assertThat(certificateRequested.getCertificate())
+			.isEqualTo(certificate);
 	}
 
 	// @formatter:off
@@ -38,8 +43,10 @@ public class CertificateRequestTest {
 	void test1() throws Exception {
 		// given
 		Office office = anyOffice();
+		Client client = anyClient();
+		Certificate certificate = anyCertificate();
 		CertificateRequested certificateRequested = office
-			.requestCertificate();
+			.requestCertificate(client, certificate);
 
 		// when
 		CertificateRequest certificateRequest = office
@@ -111,6 +118,34 @@ public class CertificateRequestTest {
 		assertThat(examPaid.getPrice()).isEqualTo(usd(10.00));
 	}
 
+	// @formatter:off
+	@DisplayName(
+		"cannot schedule exam twice"
+	)
+	// @formatter:on
+	@Test
+	void scheduleExamTwice() throws Exception {
+		// given
+		CertificateRequest certificateRequest = scheduleExam();
+
+		// when
+		CannotRescheduleExamException exception =
+			catchThrowableOfType(() -> certificateRequest
+			.scheduleExam(anyDate()),
+				CannotRescheduleExamException.class);
+
+		// then
+		assertThat(exception).isNotNull();
+	}
+
+	private Certificate anyCertificate() {
+		return javaCert();
+	}
+
+	private Client anyClient() {
+		return regularClient();
+	}
+
 	private ExamPaid payForExam(CertificateRequest certificateRequest) {
 		return certificateRequest
 			.pay(((client, certificate) -> usd(10.00)));
@@ -144,7 +179,7 @@ public class CertificateRequestTest {
 	}
 
 	private CertificateRequest generateCertificateRequest() {
-		return new CertificateRequest();
+		return new CertificateRequest(anyClient(), anyCertificate());
 	}
 
 	private Office anyOffice() {
