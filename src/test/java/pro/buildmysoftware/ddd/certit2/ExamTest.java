@@ -4,7 +4,11 @@ import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pro.buildmysoftware.ddd.certit2.issue.exam.*;
+import pro.buildmysoftware.ddd.certit2.issue.exam.CertificateIssueOffice;
+import pro.buildmysoftware.ddd.certit2.issue.exam.Exam;
+import pro.buildmysoftware.ddd.certit2.issue.exam.ExamCompany;
+import pro.buildmysoftware.ddd.certit2.issue.exam.ExamPassed;
+import pro.buildmysoftware.ddd.certit2.issue.request.model.CertificateIssued;
 import pro.buildmysoftware.ddd.certit2.issue.request.model.ExamScheduled;
 
 import java.time.LocalDateTime;
@@ -44,7 +48,8 @@ public class ExamTest {
 		ExamPassed examPassed = examCompany.passExam();
 
 		// when
-		Certificate certificate = office.issueCertificate(examPassed);
+		CertificateIssued certificate = office
+			.issueCertificate(examPassed);
 
 		// then
 		assertThat(certificate).isNotNull();

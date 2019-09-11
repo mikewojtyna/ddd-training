@@ -7,7 +7,6 @@ import pro.buildmysoftware.ddd.certit2.issue.exam.Certificate;
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static pro.buildmysoftware.ddd.certit2.expire.TestFixtureUtils.certificateWithExpirationDate;
@@ -33,11 +32,11 @@ public class StandardRevokePolicyTest {
 			new StandardCertificateRevokePolicy(clock, 29);
 
 		// when
-		Optional<CertificateRevoked> certificateRevoked = policy
-			.checkIfRevoked(certificate);
+		boolean certificateRevoked =
+			policy.checkIfRevoked(certificate);
 
 		// then
-		assertThat(certificateRevoked).isPresent();
+		assertThat(certificateRevoked).isTrue();
 	}
 
 	private LocalDate anyDate() {

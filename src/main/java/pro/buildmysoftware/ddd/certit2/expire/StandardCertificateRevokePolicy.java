@@ -4,7 +4,6 @@ import pro.buildmysoftware.ddd.certit2.issue.exam.Certificate;
 
 import java.time.Clock;
 import java.time.LocalDate;
-import java.util.Optional;
 
 public class StandardCertificateRevokePolicy implements CertificateRevokePolicy {
 	private Clock clock;
@@ -17,12 +16,9 @@ public class StandardCertificateRevokePolicy implements CertificateRevokePolicy 
 	}
 
 	@Override
-	public Optional<CertificateRevoked> checkIfRevoked(Certificate certificate) {
+	public boolean checkIfRevoked(Certificate certificate) {
 		LocalDate currentDate = LocalDate.now(clock);
-		if (currentDate.isAfter(certificate.getExpirationDate()
-			.plusDays(gracePeriodInDays))) {
-			return Optional.of(new CertificateRevoked());
-		}
-		return Optional.empty();
+		return currentDate.isAfter(certificate.getExpirationDate()
+			.plusDays(gracePeriodInDays));
 	}
 }
