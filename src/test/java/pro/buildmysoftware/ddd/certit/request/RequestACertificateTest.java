@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import pro.buildmysoftware.ddd.certit.request.domain.DomainEventPublisher;
 import pro.buildmysoftware.ddd.certit.request.domain.model.*;
 
 import java.time.LocalDate;

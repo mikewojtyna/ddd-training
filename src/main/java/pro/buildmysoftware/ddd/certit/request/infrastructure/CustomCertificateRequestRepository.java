@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class CustomCertificateRequestRepository implements CertificateRequestRepository {
 	@Override
-	public Optional<CertificateRequestRepository> load(CertificateRequestId id) {
+	public Optional<CertificateRequest> load(CertificateRequestId id) {
 		// TODO: implement this
 		return Optional.empty();
 	}

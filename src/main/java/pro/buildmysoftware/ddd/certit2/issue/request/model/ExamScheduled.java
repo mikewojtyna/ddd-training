@@ -1,4 +1,4 @@
-package pro.buildmysoftware.ddd.certit2.issue;
+package pro.buildmysoftware.ddd.certit2.issue.request.model;
 
 import lombok.Value;
 import org.joda.money.Money;
