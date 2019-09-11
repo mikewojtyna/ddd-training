@@ -1,7 +1,6 @@
-package pro.buildmysoftware.ddd.certit2.issue;
+package pro.buildmysoftware.ddd.certit2.issue.request.model;
 
 import lombok.Value;
-import pro.buildmysoftware.ddd.certit2.issue.request.model.Client;
 
 @Value
 public class CertificateRequested {

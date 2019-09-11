@@ -1,6 +1,6 @@
 package pro.buildmysoftware.ddd.certit2.expire;
 
-import pro.buildmysoftware.ddd.certit2.issue.Certificate;
+import pro.buildmysoftware.ddd.certit2.issue.exam.Certificate;
 
 import java.time.LocalDate;
 

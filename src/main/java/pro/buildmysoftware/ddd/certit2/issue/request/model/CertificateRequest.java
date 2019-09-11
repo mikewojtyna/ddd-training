@@ -1,8 +1,6 @@
 package pro.buildmysoftware.ddd.certit2.issue.request.model;
 
 import org.joda.money.Money;
-import pro.buildmysoftware.ddd.certit2.issue.CannotRescheduleExamException;
-import pro.buildmysoftware.ddd.certit2.issue.RequestCertificateType;
 
 import java.time.LocalDateTime;
 
@@ -22,7 +20,7 @@ public class CertificateRequest {
 	}
 
 	public ExamScheduled scheduleExam(LocalDateTime examDate,
-					  ExamPricePolicy priceCalculator) {
+					  ExamPricePolicy priceCalculator) throws CannotRescheduleExamException {
 		if (examScheduled) {
 			throw new CannotRescheduleExamException("Exam is " +
 				"already scheduled");

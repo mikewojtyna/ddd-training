@@ -2,7 +2,7 @@ package pro.buildmysoftware.ddd.certit2.expire;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pro.buildmysoftware.ddd.certit2.issue.Certificate;
+import pro.buildmysoftware.ddd.certit2.issue.exam.Certificate;
 
 import java.time.Clock;
 import java.time.LocalDate;

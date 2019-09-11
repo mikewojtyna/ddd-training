@@ -1,4 +1,4 @@
-package pro.buildmysoftware.ddd.certit2.issue;
+package pro.buildmysoftware.ddd.certit2.issue.exam;
 
 public interface CertificateSpecification {
 	boolean isSatisfiedBy(Certificate certificate);

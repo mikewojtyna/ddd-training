@@ -4,14 +4,7 @@ import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pro.buildmysoftware.ddd.certit2.issue.CannotRescheduleExamException;
-import pro.buildmysoftware.ddd.certit2.issue.CertificateRequested;
-import pro.buildmysoftware.ddd.certit2.issue.Office;
-import pro.buildmysoftware.ddd.certit2.issue.RequestCertificateType;
-import pro.buildmysoftware.ddd.certit2.issue.request.model.CertificateRequest;
-import pro.buildmysoftware.ddd.certit2.issue.request.model.Client;
-import pro.buildmysoftware.ddd.certit2.issue.request.model.ExamPricePolicy;
-import pro.buildmysoftware.ddd.certit2.issue.request.model.ExamScheduled;
+import pro.buildmysoftware.ddd.certit2.issue.request.model.*;
 
 import java.time.LocalDateTime;
 

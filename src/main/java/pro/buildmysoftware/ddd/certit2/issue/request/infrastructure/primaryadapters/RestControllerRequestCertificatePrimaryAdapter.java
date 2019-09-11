@@ -3,8 +3,8 @@ package pro.buildmysoftware.ddd.certit2.issue.request.infrastructure.primaryadap
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pro.buildmysoftware.ddd.certit2.issue.RequestCertificateType;
 import pro.buildmysoftware.ddd.certit2.issue.request.model.Client;
+import pro.buildmysoftware.ddd.certit2.issue.request.model.RequestCertificateType;
 import pro.buildmysoftware.ddd.certit2.issue.request.primaryports.RequestCertificatePort;
 
 @RestController

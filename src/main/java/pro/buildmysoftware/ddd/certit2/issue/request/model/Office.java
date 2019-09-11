@@ -1,7 +1,4 @@
-package pro.buildmysoftware.ddd.certit2.issue;
-
-import pro.buildmysoftware.ddd.certit2.issue.request.model.CertificateRequest;
-import pro.buildmysoftware.ddd.certit2.issue.request.model.Client;
+package pro.buildmysoftware.ddd.certit2.issue.request.model;
 
 import java.util.Objects;
 
