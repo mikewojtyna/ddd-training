@@ -2,7 +2,7 @@ package pro.buildmysoftware.ddd.certit.request.read;
 
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import pro.buildmysoftware.ddd.certit.request.model.CertificateRequested;
+import pro.buildmysoftware.ddd.certit.request.domain.model.CertificateRequested;
 
 @Component
 public class ReadModelUpdater {

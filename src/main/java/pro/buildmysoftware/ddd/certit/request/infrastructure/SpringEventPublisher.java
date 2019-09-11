@@ -2,8 +2,8 @@ package pro.buildmysoftware.ddd.certit.request.infrastructure;
 
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
-import pro.buildmysoftware.ddd.certit.request.model.CertificateRequested;
-import pro.buildmysoftware.ddd.certit.request.model.DomainEventPublisher;
+import pro.buildmysoftware.ddd.certit.request.domain.DomainEventPublisher;
+import pro.buildmysoftware.ddd.certit.request.domain.model.CertificateRequested;
 
 @Component
 public class SpringEventPublisher implements DomainEventPublisher {

@@ -1,4 +1,6 @@
-package pro.buildmysoftware.ddd.certit.request.model;
+package pro.buildmysoftware.ddd.certit.request.domain.model;
+
+import pro.buildmysoftware.ddd.certit.request.domain.DomainEventPublisher;
 
 public class CertificatesOffice {
 	private DomainEventPublisher eventPublisher;

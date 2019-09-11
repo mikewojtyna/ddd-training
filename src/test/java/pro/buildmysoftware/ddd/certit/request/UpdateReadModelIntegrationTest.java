@@ -5,9 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pro.buildmysoftware.ddd.certit.request.model.CertificatesOffice;
-import pro.buildmysoftware.ddd.certit.request.model.Client;
-import pro.buildmysoftware.ddd.certit.request.model.RequestCertificateCommand;
+import pro.buildmysoftware.ddd.certit.request.domain.model.CertificatesOffice;
+import pro.buildmysoftware.ddd.certit.request.domain.model.Client;
+import pro.buildmysoftware.ddd.certit.request.domain.model.RequestCertificateCommand;
 import pro.buildmysoftware.ddd.certit.request.read.CertificateRequestReadModel;
 import pro.buildmysoftware.ddd.certit.request.read.CertificateRequestReadModelRepository;
 
