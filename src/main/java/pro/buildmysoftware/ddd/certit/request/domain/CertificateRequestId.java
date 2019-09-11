@@ -1,7 +1,11 @@
 package pro.buildmysoftware.ddd.certit.request.domain;
 
+import lombok.Data;
+
+import javax.persistence.Embeddable;
+
+@Embeddable
+@Data
 public class CertificateRequestId {
-	public Long getValue() {
-		return null;
-	}
+	private long value;
 }

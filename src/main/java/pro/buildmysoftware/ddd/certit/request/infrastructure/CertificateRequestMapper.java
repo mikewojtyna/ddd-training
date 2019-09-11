@@ -3,7 +3,7 @@ package pro.buildmysoftware.ddd.certit.request.infrastructure;
 import pro.buildmysoftware.ddd.certit.request.domain.model.CertificateRequest;
 
 public interface CertificateRequestMapper {
-	CertificateRequest fromEntity(CertififcateRequestJpaEntity entity);
+	CertificateRequest fromEntity(CertificateRequestJpaEntity entity);
 
-	CertififcateRequestJpaEntity fromDomain(CertificateRequest request);
+	CertificateRequestJpaEntity fromDomain(CertificateRequest request);
 }
