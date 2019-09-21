@@ -99,11 +99,36 @@ public class RentBikeTest {
 			.isEqualTo(expectedPayment);
 	}
 
-	private User regularUserWithName(String name) {
-		return userWithName(name);
+	// @formatter:off
+	@DisplayName(
+		"given a premium user Patryk who rent a bike, " +
+		"when Patryk decides to return a bike after one hour, " +
+		"then he needs to pay only $10 USD"
+	)
+	// @formatter:on
+	@Test
+	void rent4() throws Exception {
+		// given
+		Bike bike = anyBike();
+		User patryk = premiumUserWithName("Patryk");
+		LocalDateTime rentTime = LocalDateTime.of(2019, 9, 21, 10, 0);
+		bike.rentBy(patryk, rentTime);
+		Money expectedPayment = Money.of(CurrencyUnit.USD, 10.00);
+		LocalDateTime returnTime = rentTime.plusHours(1);
+
+		// when
+		BikeReturned bikeReturned = bike.returnBike(returnTime);
+
+		// then
+		assertThat(bikeReturned.getPayment())
+			.isEqualTo(expectedPayment);
 	}
 
-	private User userWithName(String patryk) {
+	private User premiumUserWithName(String name) {
+		return User.premium(name);
+	}
+
+	private User regularUserWithName(String patryk) {
 		return new User(patryk);
 	}
 
