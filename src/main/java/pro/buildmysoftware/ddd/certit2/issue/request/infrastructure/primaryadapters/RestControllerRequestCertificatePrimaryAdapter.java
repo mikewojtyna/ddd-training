@@ -1,6 +1,7 @@
 package pro.buildmysoftware.ddd.certit2.issue.request.infrastructure.primaryadapters;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pro.buildmysoftware.ddd.certit2.issue.request.model.Client;
@@ -10,6 +11,7 @@ import pro.buildmysoftware.ddd.certit2.issue.request.primaryports.RequestCertifi
 @RestController
 @RequestMapping("/api/requests")
 public class RestControllerRequestCertificatePrimaryAdapter {
+
 	private RequestCertificatePort requestCertificatePort;
 
 	public RestControllerRequestCertificatePrimaryAdapter(RequestCertificatePort requestCertificatePort) {
@@ -17,7 +19,7 @@ public class RestControllerRequestCertificatePrimaryAdapter {
 	}
 
 	@PostMapping
-	public void requestCertificate(RequestCertificateDtoCommand command) {
+	public void requestCertificate(@RequestBody RequestCertificateDtoCommand command) {
 		requestCertificatePort
 			.requestCertificate(new RequestCertificateType(command
 				.getType()), new Client(true));
