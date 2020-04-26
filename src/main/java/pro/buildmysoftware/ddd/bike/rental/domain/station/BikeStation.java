@@ -2,14 +2,22 @@ package pro.buildmysoftware.ddd.bike.rental.domain.station;
 
 import pro.buildmysoftware.ddd.bike.common.AggregateRoot;
 
+import java.util.LinkedList;
+
 @AggregateRoot
 public class BikeStation {
 
-	private int availableBikes;
+	private LinkedList<Bike> availableBikes;
+	private LinkedList<Bike> rentBikes;
 	private BikeStationId bikeStationId;
 
-	private BikeStation(int availableBikes) {
-		this.availableBikes = availableBikes;
+	private BikeStation(int numberOfAvailableBikes) {
+		rentBikes = new LinkedList<>();
+		availableBikes = new LinkedList<>();
+		for (int i = 0; i < numberOfAvailableBikes; i++) {
+			availableBikes.add(new Bike());
+		}
+		bikeStationId = new BikeStationId();
 	}
 
 	public static BikeStation withAnyRandomSingleBike() {
@@ -21,10 +29,12 @@ public class BikeStation {
 	}
 
 	public BikeEvent rentBy(User user) {
-		if (availableBikes == 0 || user.isBlocked()) {
+		if (availableBikes.size() == 0 || user.isBlocked()) {
 			return new BikeRentFailed();
 		}
-		availableBikes--;
+		Bike bike = availableBikes.pop();
+		bike.rent();
+		rentBikes.add(bike);
 		return new BikeRent();
 	}
 }
