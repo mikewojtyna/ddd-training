@@ -5,4 +5,7 @@ import lombok.Value;
 @Value
 public class BikeStationId {
 
+	public static BikeStationId valueOf(String bikeStationId) {
+		return null;
+	}
 }
