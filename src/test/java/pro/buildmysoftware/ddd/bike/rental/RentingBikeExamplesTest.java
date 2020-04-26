@@ -2,7 +2,7 @@ package pro.buildmysoftware.ddd.bike.rental;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pro.buildmysoftware.ddd.bike.rental.station.*;
+import pro.buildmysoftware.ddd.bike.rental.domain.station.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

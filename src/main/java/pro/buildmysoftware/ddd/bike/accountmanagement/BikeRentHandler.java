@@ -3,7 +3,7 @@ package pro.buildmysoftware.ddd.bike.accountmanagement;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import pro.buildmysoftware.ddd.bike.accountmanagement.user.UserRepository;
-import pro.buildmysoftware.ddd.bike.rental.station.BikeRent;
+import pro.buildmysoftware.ddd.bike.rental.domain.station.BikeRent;
 
 @Component
 public class BikeRentHandler {

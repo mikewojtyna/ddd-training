@@ -1,6 +1,6 @@
 package pro.buildmysoftware.ddd.bike.common;
 
-import pro.buildmysoftware.ddd.bike.rental.station.BikeEvent;
+import pro.buildmysoftware.ddd.bike.rental.domain.station.BikeEvent;
 
 public interface EventPublisher {
 

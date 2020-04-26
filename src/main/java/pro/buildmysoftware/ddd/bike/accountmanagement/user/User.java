@@ -2,7 +2,7 @@ package pro.buildmysoftware.ddd.bike.accountmanagement.user;
 
 import lombok.Value;
 import org.joda.money.Money;
-import pro.buildmysoftware.ddd.bike.rental.station.BikeRent;
+import pro.buildmysoftware.ddd.bike.rental.domain.station.BikeRent;
 
 @Value
 public class User {

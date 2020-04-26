@@ -2,11 +2,11 @@ package pro.buildmysoftware.ddd.bike.rental.primaryports;
 
 import pro.buildmysoftware.ddd.bike.common.EventPublisher;
 import pro.buildmysoftware.ddd.bike.common.PrimaryPort;
+import pro.buildmysoftware.ddd.bike.rental.domain.station.BikeEvent;
+import pro.buildmysoftware.ddd.bike.rental.domain.station.BikeStationId;
+import pro.buildmysoftware.ddd.bike.rental.domain.station.BikeStationRepository;
 import pro.buildmysoftware.ddd.bike.rental.secondaryports.UserId;
 import pro.buildmysoftware.ddd.bike.rental.secondaryports.UserIdentityService;
-import pro.buildmysoftware.ddd.bike.rental.station.BikeEvent;
-import pro.buildmysoftware.ddd.bike.rental.station.BikeStationId;
-import pro.buildmysoftware.ddd.bike.rental.station.BikeStationRepository;
 
 @PrimaryPort
 public class BikeRentalService {
